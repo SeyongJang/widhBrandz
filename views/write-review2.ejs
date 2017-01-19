@@ -1,0 +1,122 @@
+<% include header.ejs %>
+<% include top-menus.ejs %>
+<script>
+    //preview image
+    $(document).ready(function() {
+        var imgTarget = $('.preview-image .upload-hidden .upload-name');
+
+        imgTarget.on('change', function () {
+            var parent = $(this).parent();
+            parent.children('.upload-display').remove();
+
+            if (window.FileReader) {
+                //image 파일만
+                if (!$(this)[0].files[0].type.match(/image\//)) return;
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var src = e.target.result;
+                    parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img src="' + src + '" class="upload-thumb"></div></div>');
+                }
+                reader.readAsDataURL($(this)[0].files[0]);
+            }
+
+            else {
+                $(this)[0].select();
+                $(this)[0].blur();
+                var imgSrc = document.selection.createRange().text;
+                parent.prepend('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+
+                var img = $(this).siblings('.upload-display').find('img');
+                img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\"" + imgSrc + "\")";
+            }
+        });
+    });
+</script>
+        <!-- contents wrap -->
+        <div id="page-wapper" class="container">
+            <div class="margin-top-30">
+                <div class="row">
+                    <div class="col-sm-8 contents-left">
+                        <div>
+                            <div class="form-group">
+                                <label for="exampleSelect1">카테고리</label>
+                                <select class="form-control" id="exampleSelect1">
+                                    <option>화장품</option>
+                                    <option>패션</option>
+                                    <option>스포츠</option>
+                                    <option>전자제품</option>
+                                    <option>여행</option>
+                                    <option>사진</option>
+                                </select>
+                            </div>
+                            <h1 class="section-title">
+                                <input placeholder="제목" style="width:100%" name="review-title">
+                            </h1>
+                        </div>
+                        <hr class="margin-bottom-10">
+                        <div class="post-meta margin-clear">
+                            <span class="author-name">찹쌀공장</span> - <span class="post-date"> NOVEMBER 28, 2016 </span>
+                        </div>
+                        <div class="post-single">
+                            <div class="filebox preview-image">
+                                <input for="input-file" class="upload-name" value="이미지 파일" disabled="disabled" >
+                                <label for="input-file">선택</label>
+                                <input type="file" id="input-file" class="upload-hidden">
+                            </div>
+
+                            <div class="review-rating">
+                                <canvas id="Chart" width="250" height="250"></canvas>
+                                <h3>RATING </h3>
+                                <p>"브랜드는 마케팅에 있어 아주 기본적인 요소입니다. 브랜드는 마케팅에 있어 아주 기본적인 요소입니다.브랜드는 마케팅에 있어 아주 기본적인 요소입니다."</p>
+                            </div>
+                            <textarea id="editor1" contenteditable="true" style="height:300px;">
+                            이 글을 지우고 작성하세요.
+                            </textarea>
+                            <input type="submit">
+                        </div>
+
+                    </div>
+
+                    <%include sidebar-right.ejs%>
+                </div>
+
+
+
+            </div>
+        </div>
+        <%include footer.ejs%>
+
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/Chart.bundle.js"></script>
+    <script>
+        var ctx = document.getElementById('Chart').getContext('2d');
+        var Chart = new Chart(ctx, {
+            type: 'radar',
+            options:{
+                legend:{
+                    display:false
+                }
+            },
+            data: {
+                labels: ['인지도', '고급화', '실용성', '가성비', '디자인', '기능성'],
+                datasets: [{
+                    data: [2, 10, 5, 5, 3, 10],
+                    backgroundColor: "rgba(63,172,214,0.8)"
+                }]
+            }
+        });
+        CKEDITOR.disableAutoInline = true;
+        CKEDITOR.inline( 'editor1' );
+    </script>
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <!--<script src="js/jquery.min.js"></script>-->
+    <!--<script src="js/tether.min.js"></script>-->
+    <!--<script src="js/bootstrap.min.js"></script>-->
+
+    <!-- customized javascript -->
+    <script src="javascripts/withbrandz.js"></script>
+    <!--<script src="/javascripts/jquery.flexslider.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,110 @@
+<% include header.ejs %>
+<% include top-menus.ejs %>
+<script>
+    //preview image
+
+</script>
+        <!-- contents wrap -->
+        <div id="page-wapper" class="container">
+            <div class="margin-top-30">
+                <div class="row">
+                    <div class="col-sm-8 contents-left">
+                        <div>
+                            <div class="form-group">
+                                <label for="exampleSelect1">카테고리</label>
+                                <select class="form-control" id="exampleSelect1" style="padding:1px 4px;">
+                                    <option>카테고리를 반드시 선택해주세요</option>
+                                    <option>화장품</option>
+                                    <option>패션</option>
+                                    <option>스포츠</option>
+                                    <option>전자제품</option>
+                                    <option>여행</option>
+                                    <option>사진</option>
+                                </select>
+                            </div>
+                            <h1 class="section-title">
+                                <input placeholder="제목을 작성해 주세요" class="review-title" name="review-title">
+                            </h1>
+                        </div>
+                        <hr class="margin-bottom-10">
+                        <div class="post-meta margin-clear">
+                            <span class="author-name">찹쌀공장</span> - <span class="post-date"> NOVEMBER 28, 2016 </span>
+                        </div>
+                        <div class="post-single" style="height:100%;">
+                            <div class="filebox preview-image">
+                                <input for="input-file" class="upload-name" value="대표 이미지 파일을 선택하세요" disabled="disabled">
+                                <label for="input-file">이미지 찾기</label>
+                                <input type="file" id="input-file" name ="file" accept="application/x-zip-compressed,image/*" class="upload-hidden">
+                            </div>
+
+                            <textarea id="post-editor" rows="10"></textarea>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="example-text-input" class="col-xs-2 col-form-label">Related Tags</label>
+                            <div class="col-xs-10">
+                                <input class="form-control input-border" type="text" value="" id="hashtags">
+                            </div>
+                        </div>
+
+                        <script>
+                            //var target = document.getElementById('hashtags');
+                            document.getElementById('hashtags').addEventListener("change", function (){
+                                var str = this.value;
+                                str = str.replace(/\s+|,\s+/g, ",");
+                                var tagsArray=str.split(",");
+                                //console.log(str);
+                                for(var i=0; i<tagsArray.length; i++){
+                                    if(tagsArray[i].indexOf("#")<0){
+                                        tagsArray[i]="#"+tagsArray[i];
+                                    }
+                                }
+                                //console.log(tagsArray);
+                                this.value = tagsArray.join(" ");
+                            });
+                        </script>
+
+                        <!--<form action="/upload/image" method="post" enctype="multipart/form-data">-->
+
+                            <!--<input type="file" name ="file" accept="application/x-zip-compressed,image/*">-->
+
+                            <!--<input type="submit" value="Upload selected file to server">-->
+
+                        <!--</form>-->
+
+                    </div>
+
+                    <%include sidebar-right.ejs%>
+                </div>
+
+
+
+            </div>
+        </div>
+        <%include footer.ejs%>
+
+    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/Chart.bundle.js"></script>
+    <script>
+        CKEDITOR.replace('post-editor');
+
+//        CKEDITOR.replace( 'post-editor', {
+//            extraPlugins: 'autogrow',
+//            autoGrow_minHeight: 200,
+//            autoGrow_maxHeight: 600,
+//            autoGrow_bottomSpace: 50,
+//            removePlugins: 'resize'
+//        } );
+
+    </script>
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <!--<script src="js/jquery.min.js"></script>-->
+    <!--<script src="js/tether.min.js"></script>-->
+    <!--<script src="js/bootstrap.min.js"></script>-->
+
+    <!-- customized javascript -->
+    <script src="/javascripts/withbrandz.js"></script>
+    <!--<script src="/javascripts/jquery.flexslider.js"></script>-->
+</body>
+</html>

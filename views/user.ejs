@@ -1,0 +1,154 @@
+<% include header.ejs %>
+<% include top-menus.ejs %>
+        <!-- contents wrap -->
+        <div id="page-wapper" class="container">
+            <div class="margin-top-30 margin-bottom-30">
+                <div class="row">
+                    <div class="col-sm-4 contents-left">
+                        <%- include user-sidemenu.ejs %>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="menu-title">
+                            <h1 class="text-uppercase">information</h1>
+                            <p>내가 등록한 브랜드의 변화를 추적합니다. 다양한 정보와 분석을 할 수 있습니다.</p>
+                        </div>
+                        <div class="margin-bottom-30">
+                            <div class="row">
+                                <div class="container-fluid">
+                                    <div class="trend-data">
+                                        <div class="trent-graph">
+                                            <canvas id="Chart" width="800" height="350"></canvas>
+                                        </div>
+                                        <div class="information">
+                                            <div>
+                                                <h4>총 등록된 글의 수</h4>
+                                                <span>45</span>
+                                            </div>
+                                            <div>
+                                                <h4>누적 조회수</h4>
+                                                <span>85k</span>
+                                            </div>
+                                            <div>
+                                                <h4>등록된 브랜드</h4>
+                                                <span>75</span>
+                                            </div>
+                                            <div>
+                                                <h4>등록된 태그</h4>
+                                                <span>859</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="menu-title">
+                                        <h1 class="text-uppercase">timeline</h1>
+                                        <p>최근 활동을 시간의 순서대로 보여줍니다.</p>
+                                    </div>
+                                    <section class="timeline" id="timeline">
+                                        <ul>
+                                            <li>
+                                                <div>
+                                                    <time>2016-11-29 13:22:12</time> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <time>2016-11-29 13:22:12</time> 브랜드는 마케팅에 있어 아주 기본적인 요소입니다. 브랜드는 마케팅에 있어 아주 기본적인 요소입니다.
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <time>2016-11-29 13:22:12</time> 브랜드는 마케팅에 있어 아주 기본적인 요소입니다. 브랜드는 마케팅에 있어 아주 기본적인 요소입니다.
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <time>2016-11-29 13:22:12</time> 브랜드는 마케팅에 있어 아주 기본적인 요소입니다. 브랜드는 마케팅에 있어 아주 기본적인 요소입니다.
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <time>2016-11-29 13:22:12</time> 브랜드는 마케팅에 있어 아주 기본적인 요소입니다. 브랜드는 마케팅에 있어 아주 기본적인 요소입니다.
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <time>2016-11-29 13:22:12</time> 브랜드는 마케팅에 있어 아주 기본적인 요소입니다. 브랜드는 마케팅에 있어 아주 기본적인 요소입니다.
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <time>2016-11-29 13:22:12</time> 브랜드는 마케팅에 있어 아주 기본적인 요소입니다. 브랜드는 마케팅에 있어 아주 기본적인 요소입니다.
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <time>2016-11-29 13:22:12</time> 브랜드는 마케팅에 있어 아주 기본적인 요소입니다. 브랜드는 마케팅에 있어 아주 기본적인 요소입니다.
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <time>2016-11-29 13:22:12</time> 브랜드는 마케팅에 있어 아주 기본적인 요소입니다. 브랜드는 마케팅에 있어 아주 기본적인 요소입니다.
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <time>2016-11-29 13:22:12</time> 브랜드는 마케팅에 있어 아주 기본적인 요소입니다. 브랜드는 마케팅에 있어 아주 기본적인 요소입니다.
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </section>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <%include footer.ejs%>
+
+
+    <!-- customized javascript -->
+    <script src="javascripts/withbrandz.js"></script>
+    <!--<script src="/javascripts/jquery.flexslider.js"></script>-->
+    <script src="js/Chart.min.js"></script>
+    <script src="js/Chart.bundle.js"></script>
+
+    <script>
+        var ctx = document.getElementById('Chart').getContext('2d');
+        var data = {
+            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            datasets: [
+                {
+                    label: "first",
+                    lineTension:0,
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                },
+                {
+                    label: "second",
+                    lineTension:0,
+                    data: [35, 49, 85, 82, 51, 55, 46],
+                },
+                {
+                    label: "third",
+                    lineTension:0,
+                    data: [65, 49, 80,71, 86, 55, 60],
+                },
+                {
+                    label: "forth",
+                    lineTension:0,
+                    data: [75, 59, 60, 71, 25, 65, 47],
+                }
+            ]
+        };
+
+        var myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: data
+        });
+    </script>
+</body>
+</html>

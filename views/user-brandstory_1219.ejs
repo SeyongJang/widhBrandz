@@ -1,0 +1,335 @@
+<% include header.ejs %>
+<% include top-menus.ejs %>
+        <!-- contents wrap -->
+        <div id="page-wapper" class="container">
+            <div class="margin-top-30 margin-bottom-30">
+                <div class="row">
+                    <div class="col-sm-4 contents-left">
+                        <%- include user-sidemenu.ejs %>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="menu-title">
+                            <h1 class="text-uppercase">my brand story</h1>
+                            <p> 내가 갖고 있는 브랜드에 대해서 작성하는 공간입니다. 사용자의 선택에 따라서 공개여부를 선택할 수 있으며, 정보에 따라서 트렌드에 반영됩니다.</p>
+                        </div>
+                        <div class="filebox preview-image">
+                            <input for="input-file" class="upload-name" value="대표 이미지 파일을 선택하세요" disabled="disabled">
+                            <label for="input-file">이미지 찾기</label>
+                            <input type="file" id="input-file" name ="file" accept="application/x-zip-compressed,image/*" class="upload-hidden">
+                        </div>
+                        <!--<div class="container-fluid post-single margin-top-30 margin-bottom-30" style="border-bottom:3px solid #333; padding:20px 0;">-->
+                            <!--<div class="col-xs-6">-->
+                                <!--<canvas id="Chart" width="250" height="250"></canvas>-->
+                                <!--<h3 class="text-xs-center" id="rating">RATING ?</h3>-->
+                            <!--</div>-->
+                            <!--<div class="col-xs-6">-->
+                                <!--<div class="form-group row">-->
+                                    <!--<label for="example-text-input" class="col-xs-3 col-form-label" data-toggle="tooltip" data-placement=top title="대중적 인기에 대한 평가">인지도</label>-->
+                                    <!--<div class="col-xs-8">-->
+                                        <!--<select class="form-control" id="recognition" name="rating">-->
+                                            <!--<option value="0">0</option>-->
+                                            <!--<option value="1">1</option>-->
+                                            <!--<option value="2">2</option>-->
+                                            <!--<option value="3">3</option>-->
+                                            <!--<option value="4">4</option>-->
+                                            <!--<option value="5">5</option>-->
+                                            <!--<option value="6">6</option>-->
+                                            <!--<option value="7">7</option>-->
+                                            <!--<option value="8">8</option>-->
+                                            <!--<option value="9">9</option>-->
+                                            <!--<option value="10">10</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group row">-->
+                                    <!--<label for="example-text-input" class="col-xs-3 col-form-label" data-toggle="tooltip" data-placement=top title="고급스러운 이미지에 대한 평가">고급화</label>-->
+                                    <!--<div class="col-xs-8">-->
+                                        <!--<select class="form-control" id="luxury" name="rating">-->
+                                            <!--<option>0</option>-->
+                                            <!--<option>1</option>-->
+                                            <!--<option>2</option>-->
+                                            <!--<option>3</option>-->
+                                            <!--<option>4</option>-->
+                                            <!--<option>5</option>-->
+                                            <!--<option>6</option>-->
+                                            <!--<option>7</option>-->
+                                            <!--<option>8</option>-->
+                                            <!--<option>9</option>-->
+                                            <!--<option>10</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group row">-->
+                                    <!--<label for="example-text-input" class="col-xs-3 col-form-label" data-toggle="tooltip" data-placement=top title="실용성에 대한 평가">실용성</label>-->
+                                    <!--<div class="col-xs-8">-->
+                                        <!--<select class="form-control" id="usefulness" name="rating">-->
+                                            <!--<option>0</option>-->
+                                            <!--<option>1</option>-->
+                                            <!--<option>2</option>-->
+                                            <!--<option>3</option>-->
+                                            <!--<option>4</option>-->
+                                            <!--<option>5</option>-->
+                                            <!--<option>6</option>-->
+                                            <!--<option>7</option>-->
+                                            <!--<option>8</option>-->
+                                            <!--<option>9</option>-->
+                                            <!--<option>10</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group row">-->
+                                    <!--<label for="example-text-input" class="col-xs-3 col-form-label" data-toggle="tooltip" data-placement=top title="가격대 성능비에 대한 평가">가성비</label>-->
+                                    <!--<div class="col-xs-8">-->
+                                        <!--<select class="form-control" id="efficiency" name="rating">-->
+                                            <!--<option>0</option>-->
+                                            <!--<option>1</option>-->
+                                            <!--<option>2</option>-->
+                                            <!--<option>3</option>-->
+                                            <!--<option>4</option>-->
+                                            <!--<option>5</option>-->
+                                            <!--<option>6</option>-->
+                                            <!--<option>7</option>-->
+                                            <!--<option>8</option>-->
+                                            <!--<option>9</option>-->
+                                            <!--<option>10</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group row">-->
+                                    <!--<label for="example-text-input" class="col-xs-3 col-form-label" data-toggle="tooltip" data-placement=top title="디자인에 대한 평가">디자인</label>-->
+                                    <!--<div class="col-xs-8">-->
+                                        <!--<select class="form-control" id="design" name="rating">-->
+                                            <!--<option>0</option>-->
+                                            <!--<option>1</option>-->
+                                            <!--<option>2</option>-->
+                                            <!--<option>3</option>-->
+                                            <!--<option>4</option>-->
+                                            <!--<option>5</option>-->
+                                            <!--<option>6</option>-->
+                                            <!--<option>7</option>-->
+                                            <!--<option>8</option>-->
+                                            <!--<option>9</option>-->
+                                            <!--<option>10</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="form-group row">-->
+                                    <!--<label for="example-text-input" class="col-xs-3 col-form-label" data-toggle="tooltip" data-placement=top title="기능성 또는 편리함에 대한 평가">기능성</label>-->
+                                    <!--<div class="col-xs-8">-->
+                                        <!--<select class="form-control" id="performance" name="rating">-->
+                                            <!--<option>0</option>-->
+                                            <!--<option>1</option>-->
+                                            <!--<option>2</option>-->
+                                            <!--<option>3</option>-->
+                                            <!--<option>4</option>-->
+                                            <!--<option>5</option>-->
+                                            <!--<option>6</option>-->
+                                            <!--<option>7</option>-->
+                                            <!--<option>8</option>-->
+                                            <!--<option>9</option>-->
+                                            <!--<option>10</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="brand-story-register" style="margin-top:40px;">
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-xs-2 col-form-label" data-toggle="tooltip" data-placement=top title="카테고리를 선택해주세요" > Category</label>
+                                <div class="col-xs-10">
+                                    <select class="form-control" id="category" name="category" style="padding:1px 4px;">
+                                        <option value="none">카테고리를 반드시 선택해주세요</option>
+                                        <option value="cosmetic">화장품</option>
+                                        <option value="fashion">패션</option>
+                                        <option value="sports">스포츠</option>
+                                        <option value="electronic">전자제품</option>
+                                        <option value="travel">여행</option>
+                                        <option value="photograpghy">사진</option>
+                                        <option value="etc">사진</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="text-input" class="col-xs-2 col-form-label" data-toggle="tooltip" data-placement=top title="브랜드를 적어주세요.">Brand</label>
+                                <div class="col-xs-10">
+                                    <input  class="form-control" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="text-input" class="col-xs-2 col-form-label" data-toggle="tooltip" data-placement=top title="브랜드에 관한 개인적 의견을 적는 곳 입니다.">My opinion</label>
+                                <div class="col-xs-10">
+                                    <textarea  class="form-control" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-xs-2 col-form-label" data-toggle="tooltip" data-placement=top title="관련 태그를 적어주세요">Related Tags</label>
+                                <div class="col-xs-10">
+                                    <input class="form-control input-border" type="text" value="" id="hashtags">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-xs-2 col-form-label" data-toggle="tooltip" data-placement=top title="다른 사람에게 추천을 하실 생각이 있으신가요?">Recommendation</label>
+                                <div class="col-xs-10">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" id="option1" autocomplete="off"> POSITIVE
+                                        </label>
+                                        <label class="btn btn-primary active">
+                                            <input type="radio" name="options" id="option2" autocomplete="off" checked> NORMAL
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" id="option3" autocomplete="off"> NEGATIVE
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="example-text-input" class="col-xs-2 col-form-label" data-toggle="tooltip" data-placement=top title="공개를 선택하시면 누구나 이 정보를 볼 수 있습니다.">Publish</label>
+                                <div class="col-xs-10">
+                                    <div class="btn-group" data-toggle="buttons">
+                                        <label class="btn btn-primary active">
+                                            <input type="radio" name="options" id="option2" autocomplete="off" checked> PUBLISH
+                                        </label>
+                                        <label class="btn btn-primary">
+                                            <input type="radio" name="options" id="option3" autocomplete="off"> CLOSE
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <p class="text-sm-center">
+                            <input class="btn btn-primary" type="submit" value="Save">
+                        </p>
+
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <%include footer.ejs%>
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <!--<script src="js/jquery.min.js"></script>-->
+    <!--<script src="js/tether.min.js"></script>-->
+    <!--<script src="js/bootstrap.min.js"></script>-->
+    <script src="/js/Chart.min.js"></script>
+    <script src="/js/Chart.bundle.js"></script>
+    <script>
+
+        var ctx = document.getElementById('Chart').getContext('2d');
+        var Chart = new Chart(ctx, {
+            type: 'radar',
+            options:{
+                legend:{
+                    display:false
+                },
+                scale: {
+                    ticks: {
+                        stepSize:2,
+                        beginAtZero: true,
+                        max:10
+                    }
+                }
+            },
+            data: {
+                labels: ['인지도', '고급화', '실용성', '가성비', '디자인', '기능성'],
+                datasets: [{
+                    data: [0,0,0,0,0,0],
+                    borderWidth:2,
+                    borderColor: "rgba(63,172,214,1)",
+                    backgroundColor: "rgba(63,172,214,0.6)"
+                }]
+            }
+        });
+
+        var recognition = document.getElementById("recognition");
+        var luxury = document.getElementById("luxury");
+        var usefulness = document.getElementById("usefulness");
+        var efficiency = document.getElementById("efficiency");
+        var design = document.getElementById("design");
+        var performance = document.getElementById("performance");
+
+
+        function ratingCalc(data){
+            var rating = document.getElementById("rating");
+            var total = 0;
+            for(var i=0; i < data.length; i++){
+                total = total+parseInt(data[i]);
+            }
+            var average = total/data.length;
+            average = average.toFixed(2);
+            rating.innerHTML = "RATING : "+average;
+
+        }
+
+//        function ratingCalc(value){
+//            var rating = document.getElementById("rating");
+//            var chartData = value;
+//            var total = 0;
+//            var length = chartData.length;
+//            for(var i=0; i < length; i++){
+//                total = total+chartData[i];
+//            }
+//            var average = total/length;
+//            //average = average.toFixed(2);
+//            console.log(total);
+//            rating.innerHTML = "RATING : "+average;
+//        }
+
+        var point=[0,0,0,0,0,0];
+        recognition.addEventListener("change", function(){
+            point[0] = recognition.options[recognition.selectedIndex].text;
+
+            Chart.data.datasets[0].data[0] = point[0];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+            //radar(point);
+        });
+        luxury.addEventListener("change", function(){
+            point[1] = luxury.options[luxury.selectedIndex].text;
+            Chart.data.datasets[0].data[1] = point[1];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+        });
+        usefulness.addEventListener("change", function(){
+            point[2] = usefulness.options[usefulness.selectedIndex].text;
+            Chart.data.datasets[0].data[2] = point[2];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+        });
+        efficiency.addEventListener("change", function(){
+            point[3] = efficiency.options[efficiency.selectedIndex].text;
+            Chart.data.datasets[0].data[3] = point[3];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+        });
+        design.addEventListener("change", function(){
+            point[4] = design.options[design.selectedIndex].text;
+            Chart.data.datasets[0].data[4] = point[4];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+        });
+        performance.addEventListener("change", function(){
+            point[5] = performance.options[performance.selectedIndex].text;
+            Chart.data.datasets[0].data[5] = point[5];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+        });
+
+    </script>
+    <!-- customized javascript -->
+    <script src="/javascripts/withbrandz.js"></script>
+    <!--<script src="/javascripts/jquery.flexslider.js"></script>-->
+</body>
+</html>

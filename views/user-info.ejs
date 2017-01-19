@@ -1,0 +1,184 @@
+<% include header.ejs %>
+<% include top-menus.ejs %>
+        <!-- contents wrap -->
+        <div id="page-wapper" class="container">
+            <div class="margin-top-30 margin-bottom-30">
+                <div class="row">
+                    <div class="col-sm-4 contents-left">
+                        <%- include user-sidemenu.ejs %>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="menu-title">
+                            <h1 class="text-uppercase">user information</h1>
+                            <p>각종 개인적인 정보를 열람, 수정할 수 있습니다.</p>
+                        </div>
+                        <div class="post-single margin-top-30 margin-bottom-30">
+                            <div class="row">
+                                <div class="container-fluid">
+                                    <div class="col-sm-6 padding-right-20" style="padding-left:0">
+                                        <h4>프로필 사진</h4>
+                                        <div class="filebox preview-image" style="margin-top:20px;">
+                                            <input for="input-file" class="upload-avatar" value="프로필 사진을 선택하세요" disabled="disabled">
+                                            <label for="input-file">이미지찾기</label>
+                                            <input type="file" id="input-file" name ="file" accept="application/x-zip-compressed,image/*" class="upload-hidden">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 padding-clear">
+                                        <h4>개인 정보</h4>
+                                        <div class="form-group">
+                                            <label for="InputEmail1">Email address</label>
+                                            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" value="asdf@asdf.com" disabled="disabled">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputPassword1">Password</label>
+                                            <input type="password" class="form-control" id="InputPassword1" placeholder="현재 암호를 넣어주세요">
+                                            <p class="text-xs-center">
+                                                <button class="btn btn-secondary" type="button">변경</button>
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputNickname1">Nickname</label>
+                                            <input type="text" class="form-control" id="InputNickname1" value="별명">
+                                            <p class="text-xs-center">
+                                                <button class="btn btn-secondary" type="button">중복확인</button>
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="InputIntroduce1">Introduce</label>
+                                            <textarea type="text" class="form-control" id="InputIntroduce1" placeholder="자기소개글" rows="6"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm-center">
+                            <input class="btn btn-primary" type="submit" value="Save">
+                        </p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <%include footer.ejs%>
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <!--<script src="js/jquery.min.js"></script>-->
+    <!--<script src="js/tether.min.js"></script>-->
+    <!--<script src="js/bootstrap.min.js"></script>-->
+    <script src="/js/Chart.min.js"></script>
+    <script src="/js/Chart.bundle.js"></script>
+    <script>
+
+        var ctx = document.getElementById('Chart').getContext('2d');
+        var Chart = new Chart(ctx, {
+            type: 'radar',
+            options:{
+                legend:{
+                    display:false
+                },
+                scale: {
+                    ticks: {
+                        stepSize:2,
+                        beginAtZero: true,
+                        max:10
+                    }
+                }
+            },
+            data: {
+                labels: ['인지도', '고급화', '실용성', '가성비', '디자인', '기능성'],
+                datasets: [{
+                    data: [0,0,0,0,0,0],
+                    borderWidth:2,
+                    borderColor: "rgba(63,172,214,1)",
+                    backgroundColor: "rgba(63,172,214,0.6)"
+                }]
+            }
+        });
+
+        var recognition = document.getElementById("recognition");
+        var luxury = document.getElementById("luxury");
+        var usefulness = document.getElementById("usefulness");
+        var efficiency = document.getElementById("efficiency");
+        var design = document.getElementById("design");
+        var performance = document.getElementById("performance");
+
+
+        function ratingCalc(data){
+            var rating = document.getElementById("rating");
+            var total = 0;
+            for(var i=0; i < data.length; i++){
+                total = total+parseInt(data[i]);
+            }
+            var average = total/data.length;
+            average = average.toFixed(2);
+            rating.innerHTML = "RATING : "+average;
+
+        }
+
+//        function ratingCalc(value){
+//            var rating = document.getElementById("rating");
+//            var chartData = value;
+//            var total = 0;
+//            var length = chartData.length;
+//            for(var i=0; i < length; i++){
+//                total = total+chartData[i];
+//            }
+//            var average = total/length;
+//            //average = average.toFixed(2);
+//            console.log(total);
+//            rating.innerHTML = "RATING : "+average;
+//        }
+
+        var point=[0,0,0,0,0,0];
+        recognition.addEventListener("change", function(){
+            point[0] = recognition.options[recognition.selectedIndex].text;
+
+            Chart.data.datasets[0].data[0] = point[0];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+            //radar(point);
+        });
+        luxury.addEventListener("change", function(){
+            point[1] = luxury.options[luxury.selectedIndex].text;
+            Chart.data.datasets[0].data[1] = point[1];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+        });
+        usefulness.addEventListener("change", function(){
+            point[2] = usefulness.options[usefulness.selectedIndex].text;
+            Chart.data.datasets[0].data[2] = point[2];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+        });
+        efficiency.addEventListener("change", function(){
+            point[3] = efficiency.options[efficiency.selectedIndex].text;
+            Chart.data.datasets[0].data[3] = point[3];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+        });
+        design.addEventListener("change", function(){
+            point[4] = design.options[design.selectedIndex].text;
+            Chart.data.datasets[0].data[4] = point[4];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+        });
+        performance.addEventListener("change", function(){
+            point[5] = performance.options[performance.selectedIndex].text;
+            Chart.data.datasets[0].data[5] = point[5];
+            console.log(point);
+            Chart.update();
+            ratingCalc(point);
+        });
+
+    </script>
+    <!-- customized javascript -->
+    <script src="/javascripts/withbrandz.js"></script>
+    <!--<script src="/javascripts/jquery.flexslider.js"></script>-->
+</body>
+</html>
